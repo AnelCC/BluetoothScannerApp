@@ -1,4 +1,4 @@
-package com.anelcc.bluetoothscanner.ui.theme
+package com.anelcc.bluetoothscanner.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,4 +1,4 @@
-package com.anelcc.bluetoothscanner.ui.theme
+package com.anelcc.bluetoothscanner.presentation.theme
 
 import android.app.Activity
 import android.os.Build
