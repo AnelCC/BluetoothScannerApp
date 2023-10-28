@@ -37,11 +37,12 @@ fun ListScreen () {
 
         LazyColumn(
             modifier = Modifier
-                .padding(innerPadding),
+                .padding(innerPadding)
+                .padding(8.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(5) { id ->
-                Text("This is item #${id+1}")
+                DeviceCard()
             }
         }
     }
