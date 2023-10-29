@@ -19,7 +19,7 @@ import com.anelcc.bluetoothscanner.presentation.theme.BluetoothScannerTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ListScreen () {
+fun DeviceList () {
 
     Scaffold(
         topBar = {
@@ -52,8 +52,8 @@ fun ListScreen () {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun DeviceListPreview() {
     BluetoothScannerTheme {
-        ListScreen()
+        DeviceList()
     }
 }
