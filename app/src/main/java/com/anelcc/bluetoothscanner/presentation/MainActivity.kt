@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.anelcc.bluetoothscanner.presentation.theme.BluetoothScannerTheme
-import com.anelcc.bluetoothscanner.presentation.ui.DeviceList
+import com.anelcc.bluetoothscanner.presentation.ui.BluetoothScannerScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BluetoothScannerTheme {
-                DeviceList()
+                BluetoothScannerScreen()
             }
         }
     }
