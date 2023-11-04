@@ -40,6 +40,8 @@ fun BluetoothScannerScreen() {
                 .fillMaxSize()
         ) {
             // Header Card
+            HeaderCard()
+
             Spacer(modifier = Modifier.height(16.dp))
             // Error Display
             // Status Text
