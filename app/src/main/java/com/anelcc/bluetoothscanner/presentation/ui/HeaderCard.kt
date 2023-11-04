@@ -24,11 +24,15 @@ import com.anelcc.bluetoothscanner.presentation.theme.BluetoothScannerTheme
 @Composable
 fun HeaderCard() {
     Card(
-        modifier = Modifier.fillMaxWidth().padding(8.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Column(
-            modifier = Modifier.padding(16.dp).fillMaxWidth(),
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Icon(
@@ -43,7 +47,11 @@ fun HeaderCard() {
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            ScanButton(
+                isScanning = true,
+                onStartScan = {  },
+                onStopScan = {  }
+            )
         }
     }
 }
