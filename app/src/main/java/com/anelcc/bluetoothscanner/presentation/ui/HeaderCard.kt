@@ -22,17 +22,16 @@ import androidx.compose.ui.unit.dp
 import com.anelcc.bluetoothscanner.presentation.theme.BluetoothScannerTheme
 
 @Composable
-fun HeaderCard() {
+fun HeaderCard(
+    isScanning: Boolean = false,
+    onStartScan: () -> Unit,
+    onStopScan: () -> Unit) {
     Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp),
+        modifier = Modifier.fillMaxWidth().padding(8.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Column(
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth(),
+            modifier = Modifier.padding(16.dp).fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Icon(
@@ -48,9 +47,9 @@ fun HeaderCard() {
                 fontWeight = FontWeight.Bold
             )
             ScanButton(
-                isScanning = true,
-                onStartScan = {  },
-                onStopScan = {  }
+                isScanning = isScanning,
+                onStartScan = onStartScan,
+                onStopScan = onStopScan
             )
         }
     }
@@ -60,6 +59,6 @@ fun HeaderCard() {
 @Composable
 fun HeaderCardPreview() {
     BluetoothScannerTheme {
-        HeaderCard()
+        HeaderCard(false,{}, {})
     }
 }

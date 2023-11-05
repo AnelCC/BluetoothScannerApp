@@ -19,7 +19,11 @@ import com.anelcc.bluetoothscanner.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BluetoothScannerScreen() {
+fun BluetoothScannerScreen(
+    onStartScan: () -> Unit,
+    onStopScan: () -> Unit,
+    onClearError: () -> Unit
+) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -40,7 +44,9 @@ fun BluetoothScannerScreen() {
                 .fillMaxSize()
         ) {
             // Header Card
-            HeaderCard()
+            HeaderCard(
+            onStartScan = onStartScan,
+            onStopScan = onStopScan)
 
             Spacer(modifier = Modifier.height(16.dp))
             // Error Display

@@ -13,7 +13,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BluetoothScannerTheme {
-                BluetoothScannerScreen()
+                BluetoothScannerScreen(
+                    onStartScan = { /* Handle start scan */ },
+                    onStopScan = { /* Handle stop scan */ },
+                    onClearError = { /* Handle clear error */ }
+                )
             }
         }
     }
