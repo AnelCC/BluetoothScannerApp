@@ -16,10 +16,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.anelcc.bluetoothscanner.R
+import com.anelcc.bluetoothscanner.domain.ScanState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BluetoothScannerScreen(
+    state: ScanState,
     onStartScan: () -> Unit,
     onStopScan: () -> Unit,
     onClearError: () -> Unit
@@ -45,8 +47,10 @@ fun BluetoothScannerScreen(
         ) {
             // Header Card
             HeaderCard(
-            onStartScan = onStartScan,
-            onStopScan = onStopScan)
+                isScanning = state.isScanning,
+                onStartScan = onStartScan,
+                onStopScan = onStopScan
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
             // Error Display
