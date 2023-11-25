@@ -1,5 +1,6 @@
 package com.anelcc.bluetoothscanner.presentation.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,6 +14,8 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.anelcc.bluetoothscanner.R
@@ -42,8 +45,8 @@ fun BluetoothScannerScreen(
         Column(
             modifier = Modifier
                 .padding(innerPadding)
-                .padding(8.dp)
                 .fillMaxSize()
+                .background(color = colorResource(R.color.purple_20))
         ) {
             // Header Card
             HeaderCard(
@@ -51,13 +54,12 @@ fun BluetoothScannerScreen(
                 onStartScan = onStartScan,
                 onStopScan = onStopScan
             )
-
             Spacer(modifier = Modifier.height(16.dp))
             // Error Display
             // Status Text
             Spacer(modifier = Modifier.height(8.dp))
             // Device List
-            DeviceList()
+            DeviceList(devices = state.devices)
         }
     }
 

@@ -10,13 +10,13 @@ import androidx.compose.ui.unit.dp
 import com.anelcc.bluetoothscanner.presentation.theme.BluetoothScannerTheme
 
 @Composable
-fun DeviceList () {
+fun DeviceList (devices: List<Any>) {
 
     LazyColumn(
         modifier = Modifier.padding(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        items(5) { id ->
+        items(devices.size) { id ->
             DeviceCard()
         }
     }
@@ -27,6 +27,6 @@ fun DeviceList () {
 @Composable
 fun DeviceListPreview() {
     BluetoothScannerTheme {
-        DeviceList()
+        DeviceList(listOf(Any(), Any(), Any(),Any(),Any()))
     }
 }
