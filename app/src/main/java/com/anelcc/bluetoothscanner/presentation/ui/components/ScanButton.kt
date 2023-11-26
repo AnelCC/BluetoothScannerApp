@@ -1,4 +1,4 @@
-package com.anelcc.bluetoothscanner.presentation.ui
+package com.anelcc.bluetoothscanner.presentation.ui.components
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size

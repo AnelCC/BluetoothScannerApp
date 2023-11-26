@@ -14,12 +14,13 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.anelcc.bluetoothscanner.R
 import com.anelcc.bluetoothscanner.domain.ScanState
+import com.anelcc.bluetoothscanner.presentation.ui.components.DeviceList
+import com.anelcc.bluetoothscanner.presentation.ui.components.HeaderCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
