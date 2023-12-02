@@ -2,12 +2,15 @@ package com.anelcc.bluetoothscanner.presentation.ui
 
 import androidx.lifecycle.ViewModel
 import com.anelcc.bluetoothscanner.domain.ScanState
+import com.anelcc.bluetoothscanner.domain.StartBluetoothScanUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 
-class BluetoothScannerViewModel() : ViewModel() {
+class BluetoothScannerViewModel(
+    private val startScanUseCase: StartBluetoothScanUseCase
+) : ViewModel() {
 
     private val _uiState = MutableStateFlow(ScanState())
     val uiState: StateFlow<ScanState> = _uiState.asStateFlow()
