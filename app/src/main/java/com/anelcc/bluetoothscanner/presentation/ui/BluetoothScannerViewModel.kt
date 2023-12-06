@@ -1,6 +1,8 @@
 package com.anelcc.bluetoothscanner.presentation.ui
 
 import androidx.lifecycle.ViewModel
+import com.anelcc.bluetoothscanner.domain.ObserveBluetoothDevicesUseCase
+import com.anelcc.bluetoothscanner.domain.ObserveScanStateUseCase
 import com.anelcc.bluetoothscanner.domain.ScanState
 import com.anelcc.bluetoothscanner.domain.StartBluetoothScanUseCase
 import com.anelcc.bluetoothscanner.domain.StopBluetoothScanUseCase
@@ -9,8 +11,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class BluetoothScannerViewModel(
-    private val startScanUseCase: StartBluetoothScanUseCase,
     private val stopScanUseCase: StopBluetoothScanUseCase,
+    private val startScanUseCase: StartBluetoothScanUseCase,
+    private val observeScanStateUseCase: ObserveScanStateUseCase,
+    private val observeDevicesUseCase: ObserveBluetoothDevicesUseCase,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(ScanState())
