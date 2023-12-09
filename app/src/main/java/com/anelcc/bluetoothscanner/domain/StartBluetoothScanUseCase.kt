@@ -1,12 +1,14 @@
 package com.anelcc.bluetoothscanner.domain
 
-class StartBluetoothScanUseCase(private val repository: Any) {
+import com.anelcc.bluetoothscanner.core.BluetoothRepository
+
+class StartBluetoothScanUseCase(private val repository: BluetoothRepository) {
     suspend operator fun invoke(): Result<Unit> {
         // Check for Bluetooth permissions and enable if needed
         val permissionsGranted = true
         return if (permissionsGranted) {
             // Start Bluetooth scan
-            Result.success(Unit)
+            return repository.startScan()
         } else {
             Result.failure(Exception("Bluetooth not available or permissions missing"))
         }
