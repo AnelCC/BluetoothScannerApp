@@ -29,8 +29,8 @@ class BluetoothScannerViewModel(
         observeBluetoothData()
     }
 
+    // Observe Bluetooth data and update the UI state
     private fun observeBluetoothData() {
-        // Observe Bluetooth data and update the UI state
         viewModelScope.launch {
             val devicesFlow = observeDevicesUseCase()
             val scanStateFlow = observeScanStateUseCase()
@@ -43,9 +43,20 @@ class BluetoothScannerViewModel(
         }
     }
 
+    // Handle start scan
     fun startScan() {
-        // Handle start scan
+        viewModelScope.launch {
+            startScanUseCase().fold(
+                onSuccess = {
+                    _uiState.value = _uiState.value.copy(error = null)
+                },
+                onFailure = { error ->
+                    _uiState.value = _uiState.value.copy(error = error.message)
+                }
+            )
+        }
     }
+
     fun stopScan() {
         // Handle stop scan
     }
