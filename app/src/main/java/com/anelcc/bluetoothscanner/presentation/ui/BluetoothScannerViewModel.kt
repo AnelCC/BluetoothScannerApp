@@ -57,8 +57,18 @@ class BluetoothScannerViewModel(
         }
     }
 
+    // Handle stop scan
     fun stopScan() {
-        // Handle stop scan
+        viewModelScope.launch {
+            stopScanUseCase().fold(
+                onSuccess = {
+                    _uiState.value = _uiState.value.copy(error = null)
+                },
+                onFailure = { error ->
+                    _uiState.value = _uiState.value.copy(error = error.message)
+                }
+            )
+        }
     }
 
     fun clearError() {
