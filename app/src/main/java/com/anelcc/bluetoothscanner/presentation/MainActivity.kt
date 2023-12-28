@@ -23,9 +23,9 @@ class MainActivity() : ComponentActivity() {
 
                 BluetoothScannerScreen(
                     state = uiState,
-                    onStartScan = { /* Handle start scan */ },
-                    onStopScan = { /* Handle stop scan */ },
-                    onClearError = { /* Handle clear error */ }
+                    onStartScan = viewModel::startScan,
+                    onStopScan = viewModel::stopScan,
+                    onClearError = viewModel::clearError
                 )
             }
         }
