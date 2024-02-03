@@ -5,6 +5,7 @@ import android.Manifest.permission.BLUETOOTH
 import android.Manifest.permission.BLUETOOTH_ADMIN
 import android.Manifest.permission.BLUETOOTH_CONNECT
 import android.Manifest.permission.BLUETOOTH_SCAN
+import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
 import android.content.Context
 import android.content.pm.PackageManager
@@ -18,6 +19,9 @@ class BluetoothRepositoryImpl(
     private val context: Context,
     private val bluetoothManager: BluetoothManager
 ) : BluetoothRepository {
+
+    private val bluetoothAdapter: BluetoothAdapter = bluetoothManager.adapter
+
     override suspend fun startScan(): Result<Unit> {
         TODO("Not yet implemented")
     }
@@ -49,7 +53,7 @@ class BluetoothRepositoryImpl(
     }
 
     override suspend fun isBluetoothEnabled(): Boolean {
-        TODO("Not yet implemented")
+        return bluetoothAdapter.isEnabled
     }
 
 }
