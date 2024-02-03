@@ -1,6 +1,5 @@
 package com.anelcc.bluetoothscanner.data
 
-import android.Manifest
 import android.Manifest.permission.BLUETOOTH
 import android.Manifest.permission.BLUETOOTH_ADMIN
 import android.Manifest.permission.BLUETOOTH_CONNECT
@@ -8,12 +7,12 @@ import android.Manifest.permission.BLUETOOTH_SCAN
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
 import android.content.Context
-import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build
 import androidx.core.content.ContextCompat
 import com.anelcc.bluetoothscanner.core.BluetoothRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 
 class BluetoothRepositoryImpl(
     private val context: Context,
@@ -21,6 +20,8 @@ class BluetoothRepositoryImpl(
 ) : BluetoothRepository {
 
     private val bluetoothAdapter: BluetoothAdapter = bluetoothManager.adapter
+
+    private val _isScanning = MutableStateFlow(false)
 
     override suspend fun startScan(): Result<Unit> {
         TODO("Not yet implemented")
@@ -39,7 +40,7 @@ class BluetoothRepositoryImpl(
     }
 
     override suspend fun observeScanState(): Flow<Boolean> {
-        TODO("Not yet implemented")
+        return _isScanning
     }
 
     override suspend fun hasBluetoothPermissions(): Boolean {
