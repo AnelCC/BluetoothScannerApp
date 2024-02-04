@@ -21,6 +21,7 @@ class BluetoothRepositoryImpl(
 
     private val bluetoothAdapter: BluetoothAdapter = bluetoothManager.adapter
 
+    private val _devices = MutableStateFlow<List<BluetoothDeviceEntity>>(emptyList())
     private val _isScanning = MutableStateFlow(false)
 
     override suspend fun startScan(): Result<Unit> {
@@ -31,18 +32,22 @@ class BluetoothRepositoryImpl(
         TODO("Not yet implemented")
     }
 
-    override suspend fun getDiscoveredDevices(): List<Any> {
-        TODO("Not yet implemented")
+    //if we find devices return the list
+    override suspend fun getDiscoveredDevices(): List<BluetoothDeviceEntity> {
+        return _devices.value
     }
 
-    override suspend fun observeDevices(): Flow<List<Any>> {
-        TODO("Not yet implemented")
+    //if we have devices observe and return sync data
+    override suspend fun observeDevices(): Flow<List<BluetoothDeviceEntity>> {
+        return _devices
     }
 
+    //validate is scanning
     override suspend fun observeScanState(): Flow<Boolean> {
         return _isScanning
     }
 
+    //validate permission
     override suspend fun hasBluetoothPermissions(): Boolean {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             ContextCompat.checkSelfPermission(context, BLUETOOTH_SCAN) == PERMISSION_GRANTED &&
