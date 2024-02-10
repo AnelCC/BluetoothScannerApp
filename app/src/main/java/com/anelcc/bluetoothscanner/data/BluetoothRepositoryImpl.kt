@@ -29,7 +29,15 @@ class BluetoothRepositoryImpl(
     }
 
     override suspend fun stopScan(): Result<Unit> {
-        TODO("Not yet implemented")
+        return try {
+            if (bluetoothAdapter.isDiscovering) {
+                bluetoothAdapter.cancelDiscovery()
+            }
+            _isScanning.value = false
+            Result.success(Unit)
+        } catch (e: SecurityException) {
+            Result.failure(e)
+        }
     }
 
     //if we find devices return the list
