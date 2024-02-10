@@ -25,7 +25,15 @@ class BluetoothRepositoryImpl(
     private val _isScanning = MutableStateFlow(false)
 
     override suspend fun startScan(): Result<Unit> {
-        TODO("Not yet implemented")
+        if (!hasBluetoothPermissions()) {
+            return Result.failure(Exception("Bluetooth permissions not granted"))
+        }
+
+        if (!isBluetoothEnabled()) {
+            return Result.failure(Exception("Bluetooth not enabled"))
+        }
+
+        return Result.success(Unit)
     }
 
     override suspend fun stopScan(): Result<Unit> {
