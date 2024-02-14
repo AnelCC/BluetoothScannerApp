@@ -28,19 +28,30 @@ class BluetoothRepositoryImpl(
 
     override suspend fun startScan(): Result<Unit> {
 
-        //Validate bluetooth before scanning
-        if (!hasBluetoothPermissions()) {
-            return Result.failure(Exception("Bluetooth permissions not granted"))
+        try {
+
+            //Validate bluetooth before scanning
+            if (!hasBluetoothPermissions()) {
+                return Result.failure(Exception("Bluetooth permissions not granted"))
+            }
+
+            //Validate bluetooth before scanning
+            if (!isBluetoothEnabled()) {
+                return Result.failure(Exception("Bluetooth not enabled"))
+            }
+
+            // we clean the list of devices if we are scanning
+            discoveredDevices.clear()
+            _devices.value = emptyList()
+
+            //cancel Discovery devices if still scanning
+            if (bluetoothAdapter.isDiscovering) {
+                bluetoothAdapter.cancelDiscovery()
+            }
+        } catch (e: SecurityException) {
+
         }
 
-        //Validate bluetooth before scanning
-        if (!isBluetoothEnabled()) {
-            return Result.failure(Exception("Bluetooth not enabled"))
-        }
-
-        // we clean the list of devices if we are scanning
-        discoveredDevices.clear()
-        _devices.value = emptyList()
 
         return Result.success(Unit)
     }
