@@ -48,6 +48,17 @@ class BluetoothRepositoryImpl(
             if (bluetoothAdapter.isDiscovering) {
                 bluetoothAdapter.cancelDiscovery()
             }
+
+            _isScanning.value = true
+            val started = bluetoothAdapter.startDiscovery()
+
+            if (started) {
+                Result.success(Unit)
+            } else {
+                _isScanning.value = false
+                Result.failure(Exception("Failed to start discovery"))
+            }
+
         } catch (e: SecurityException) {
 
         }
