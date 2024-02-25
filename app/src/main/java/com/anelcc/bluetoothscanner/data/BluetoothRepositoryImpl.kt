@@ -60,7 +60,8 @@ class BluetoothRepositoryImpl(
             }
 
         } catch (e: SecurityException) {
-
+            _isScanning.value = false
+            Result.failure(e)
         }
 
 
