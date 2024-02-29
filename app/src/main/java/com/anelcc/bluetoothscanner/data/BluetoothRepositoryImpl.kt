@@ -27,8 +27,7 @@ class BluetoothRepositoryImpl(
 
 
     override suspend fun startScan(): Result<Unit> {
-
-        try {
+        return try {
 
             //Validate bluetooth before scanning
             if (!hasBluetoothPermissions()) {
@@ -63,9 +62,6 @@ class BluetoothRepositoryImpl(
             _isScanning.value = false
             Result.failure(e)
         }
-
-
-        return Result.success(Unit)
     }
 
     override suspend fun stopScan(): Result<Unit> {
