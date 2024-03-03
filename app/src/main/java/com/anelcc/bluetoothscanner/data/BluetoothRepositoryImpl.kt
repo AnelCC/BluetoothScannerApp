@@ -4,9 +4,13 @@ import android.Manifest.permission.BLUETOOTH
 import android.Manifest.permission.BLUETOOTH_ADMIN
 import android.Manifest.permission.BLUETOOTH_CONNECT
 import android.Manifest.permission.BLUETOOTH_SCAN
+import android.annotation.SuppressLint
 import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothManager
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build
 import androidx.core.content.ContextCompat
@@ -25,6 +29,11 @@ class BluetoothRepositoryImpl(
     private val discoveredDevices = mutableListOf<BluetoothDeviceEntity>()
     private val _devices = MutableStateFlow<List<BluetoothDeviceEntity>>(emptyList())
 
+    private val bluetoothReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            TODO("Not yet implemented")
+        }
+    }
 
     override suspend fun startScan(): Result<Unit> {
         return try {
