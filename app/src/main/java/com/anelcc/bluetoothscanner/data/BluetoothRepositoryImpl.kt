@@ -32,6 +32,16 @@ class BluetoothRepositoryImpl(
     private val bluetoothReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             TODO("Not yet implemented")
+            when (intent?.action) {
+
+                BluetoothDevice.ACTION_FOUND -> {
+
+                }
+
+                BluetoothAdapter.ACTION_DISCOVERY_FINISHED -> {
+                    _isScanning.value = false
+                }
+            }
         }
     }
 
