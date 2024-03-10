@@ -126,3 +126,33 @@ class BluetoothRepositoryImpl(
     }
 
 }
+
+
+// Extension function to convert BluetoothDevice to BluetoothDeviceEntity
+@SuppressLint("MissingPermission")
+private fun BluetoothDevice.toBluetoothDeviceEntity(rssi: Int): BluetoothDeviceEntity {
+    val deviceName = try {
+        this.name ?: "Unknown Device"
+    } catch (e: SecurityException) {
+        "Unknown Device"
+    }
+
+    val deviceType = when (this.bluetoothClass?.majorDeviceClass) {
+        0x0100 -> DeviceType.COMPUTER
+        0x0200 -> DeviceType.PHONE
+        0x0400 -> DeviceType.AUDIO_VIDEO
+        0x0500 -> DeviceType.PERIPHERAL
+        0x0600 -> DeviceType.IMAGING
+        0x0700 -> DeviceType.WEARABLE
+        0x0800 -> DeviceType.TOY
+        0x0900 -> DeviceType.HEALTH
+        else -> DeviceType.UNKNOWN
+    }
+
+    return BluetoothDeviceEntity(
+        name = deviceName,
+        address = this.address,
+        deviceType = deviceType,
+        rssi = if (rssi != Short.MIN_VALUE.toInt()) rssi else null
+    )
+}
