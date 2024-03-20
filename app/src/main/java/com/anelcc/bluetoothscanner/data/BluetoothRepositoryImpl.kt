@@ -42,6 +42,13 @@ class BluetoothRepositoryImpl(
                     }
 
                     val rssi = intent.getShortExtra(BluetoothDevice.EXTRA_RSSI, Short.MIN_VALUE).toInt()
+                    device?.let { bluetoothDevice ->
+                        val deviceEntity = bluetoothDevice.toBluetoothDeviceEntity(rssi)
+                        if (!discoveredDevices.any { it.address == deviceEntity.address }) {
+                            discoveredDevices.add(deviceEntity)
+                            _devices.value = discoveredDevices.toList()
+                        }
+                    }
                 }
 
                 BluetoothAdapter.ACTION_DISCOVERY_FINISHED -> {
