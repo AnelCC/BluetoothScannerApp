@@ -30,6 +30,8 @@ class MainActivity() : ComponentActivity() {
         enableEdgeToEdge()
         // Here Initialize the ViewModel with dependencies
 
+        //Ask anc validate run time permissions
+        checkAndRequestPermissions()
 
         setContent {
             BluetoothScannerTheme {
@@ -37,6 +39,24 @@ class MainActivity() : ComponentActivity() {
                 BluetoothScannerApp(viewModel)
             }
         }
+    }
+
+    private fun checkAndRequestPermissions() {
+        val permissions = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            arrayOf(
+                android.Manifest.permission.BLUETOOTH_SCAN,
+                android.Manifest.permission.BLUETOOTH_CONNECT,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            )
+        } else {
+            arrayOf(
+                android.Manifest.permission.BLUETOOTH,
+                android.Manifest.permission.BLUETOOTH_ADMIN,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            )
+        }
+
+        requestPermissionLauncher.launch(permissions)
     }
 }
 
