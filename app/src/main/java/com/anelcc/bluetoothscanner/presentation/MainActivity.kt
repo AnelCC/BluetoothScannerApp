@@ -1,5 +1,6 @@
 package com.anelcc.bluetoothscanner.presentation
 
+import android.bluetooth.BluetoothManager
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -9,12 +10,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.anelcc.bluetoothscanner.data.BluetoothRepositoryImpl
 import com.anelcc.bluetoothscanner.presentation.theme.BluetoothScannerTheme
 import com.anelcc.bluetoothscanner.presentation.ui.BluetoothScannerScreen
 import com.anelcc.bluetoothscanner.presentation.ui.BluetoothScannerViewModel
 
 class MainActivity() : ComponentActivity() {
     private lateinit var viewModel: BluetoothScannerViewModel
+    private lateinit var bluetoothRepository: BluetoothRepositoryImpl
 
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -29,6 +32,7 @@ class MainActivity() : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         // Here Initialize the ViewModel with dependencies
+        initializeDependencies()
 
         //Ask anc validate run time permissions
         checkAndRequestPermissions()
@@ -57,6 +61,11 @@ class MainActivity() : ComponentActivity() {
         }
 
         requestPermissionLauncher.launch(permissions)
+    }
+
+    private fun initializeDependencies() {
+        val bluetoothManager = getSystemService(BLUETOOTH_SERVICE) as BluetoothManager
+        bluetoothRepository = BluetoothRepositoryImpl(this, bluetoothManager)
     }
 }
 
