@@ -11,6 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.anelcc.bluetoothscanner.data.BluetoothRepositoryImpl
+import com.anelcc.bluetoothscanner.domain.ObserveBluetoothDevicesUseCase
+import com.anelcc.bluetoothscanner.domain.ObserveScanStateUseCase
+import com.anelcc.bluetoothscanner.domain.StartBluetoothScanUseCase
+import com.anelcc.bluetoothscanner.domain.StopBluetoothScanUseCase
 import com.anelcc.bluetoothscanner.presentation.theme.BluetoothScannerTheme
 import com.anelcc.bluetoothscanner.presentation.ui.BluetoothScannerScreen
 import com.anelcc.bluetoothscanner.presentation.ui.BluetoothScannerViewModel
@@ -66,6 +70,14 @@ class MainActivity() : ComponentActivity() {
     private fun initializeDependencies() {
         val bluetoothManager = getSystemService(BLUETOOTH_SERVICE) as BluetoothManager
         bluetoothRepository = BluetoothRepositoryImpl(this, bluetoothManager)
+
+        viewModel = BluetoothScannerViewModel(
+            startScanUseCase = StartBluetoothScanUseCase(bluetoothRepository),
+            stopScanUseCase = StopBluetoothScanUseCase(bluetoothRepository),
+            observeDevicesUseCase = ObserveBluetoothDevicesUseCase(bluetoothRepository),
+            observeScanStateUseCase = ObserveScanStateUseCase(bluetoothRepository)
+        )
+
     }
 }
 
