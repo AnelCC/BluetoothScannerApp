@@ -77,7 +77,6 @@ class MainActivity() : ComponentActivity() {
             observeDevicesUseCase = ObserveBluetoothDevicesUseCase(bluetoothRepository),
             observeScanStateUseCase = ObserveScanStateUseCase(bluetoothRepository)
         )
-
     }
 }
 
