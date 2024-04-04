@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.anelcc.bluetoothscanner.R
 import com.anelcc.bluetoothscanner.domain.ScanState
 import com.anelcc.bluetoothscanner.presentation.ui.components.DeviceList
+import com.anelcc.bluetoothscanner.presentation.ui.components.ErrorCard
 import com.anelcc.bluetoothscanner.presentation.ui.components.HeaderCard
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -56,7 +57,16 @@ fun BluetoothScannerScreen(
                 onStopScan = onStopScan
             )
             Spacer(modifier = Modifier.height(16.dp))
+
             // Error Display
+            state.error?.let { error ->
+                ErrorCard(
+                    error = error,
+                    onDismiss = onClearError
+                )
+
+            }
+
             // Status Text
             Spacer(modifier = Modifier.height(8.dp))
             // Device List

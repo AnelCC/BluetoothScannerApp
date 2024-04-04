@@ -23,7 +23,7 @@ import com.anelcc.bluetoothscanner.presentation.theme.BluetoothScannerTheme
 @Composable
 fun ErrorCard(error: String, onDismiss: () -> Unit) {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().padding(8.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.errorContainer
         )
