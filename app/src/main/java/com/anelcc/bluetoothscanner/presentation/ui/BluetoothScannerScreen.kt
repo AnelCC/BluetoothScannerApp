@@ -22,6 +22,7 @@ import com.anelcc.bluetoothscanner.domain.ScanState
 import com.anelcc.bluetoothscanner.presentation.ui.components.DeviceList
 import com.anelcc.bluetoothscanner.presentation.ui.components.ErrorCard
 import com.anelcc.bluetoothscanner.presentation.ui.components.HeaderCard
+import com.anelcc.bluetoothscanner.presentation.ui.components.ScanningStatus
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -64,11 +65,12 @@ fun BluetoothScannerScreen(
                     error = error,
                     onDismiss = onClearError
                 )
-
             }
 
             // Status Text
+            ScanningStatus(state.isScanning, state.devices.size)
             Spacer(modifier = Modifier.height(8.dp))
+
             // Device List
             DeviceList(devices = state.devices)
         }
