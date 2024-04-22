@@ -11,6 +11,7 @@ import android.bluetooth.BluetoothManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build
 import androidx.core.content.ContextCompat
@@ -56,6 +57,20 @@ class BluetoothRepositoryImpl(
                 }
             }
         }
+    }
+
+    init {
+        val filter = IntentFilter().apply {
+            addAction(BluetoothDevice.ACTION_FOUND)
+            addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED)
+        }
+        /*
+        * The receiver will be called with any broadcast Intent that matches filter,
+        * in the main application thread.
+        * This call is asynchronous; it returns immediately,
+        * and you will continue executing while the receivers are run.
+        */
+        context.registerReceiver(bluetoothReceiver, filter)
     }
 
     override suspend fun startScan(): Result<Unit> {

@@ -75,5 +75,4 @@ fun BluetoothScannerScreen(
             DeviceList(devices = state.devices)
         }
     }
-
 }
