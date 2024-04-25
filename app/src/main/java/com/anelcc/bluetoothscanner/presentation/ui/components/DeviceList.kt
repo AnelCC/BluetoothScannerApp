@@ -7,17 +7,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.anelcc.bluetoothscanner.data.BluetoothDeviceEntity
+import com.anelcc.bluetoothscanner.data.DeviceType
 import com.anelcc.bluetoothscanner.presentation.theme.BluetoothScannerTheme
 
 @Composable
-fun DeviceList (devices: List<Any>) {
+fun DeviceList (devices: List<BluetoothDeviceEntity>) {
 
     LazyColumn(
         modifier = Modifier.padding(8.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(devices.size) { id ->
-            DeviceCard()
+            DeviceCard(devices[id])
         }
     }
 }
@@ -27,6 +29,14 @@ fun DeviceList (devices: List<Any>) {
 @Composable
 fun DeviceListPreview() {
     BluetoothScannerTheme {
-        DeviceList(listOf(Any(), Any(), Any(),Any(),Any()))
+        DeviceList(
+            listOf(
+                BluetoothDeviceEntity("abc", "123", DeviceType.COMPUTER),
+                BluetoothDeviceEntity("abc", "123", DeviceType.PHONE),
+                BluetoothDeviceEntity("abc", "123", DeviceType.TOY),
+                BluetoothDeviceEntity("abc", "123", DeviceType.PHONE),
+                BluetoothDeviceEntity("abc", "123", DeviceType.COMPUTER),
+            )
+        )
     }
 }

@@ -16,10 +16,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.anelcc.bluetoothscanner.R
+import com.anelcc.bluetoothscanner.data.BluetoothDeviceEntity
+import com.anelcc.bluetoothscanner.data.DeviceType
 import com.anelcc.bluetoothscanner.presentation.theme.BluetoothScannerTheme
 
 @Composable
-fun DeviceCard() {
+fun DeviceCard(device: BluetoothDeviceEntity) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
@@ -54,7 +56,9 @@ fun DeviceCard() {
 @Composable
 fun DeviceCardPreview() {
     BluetoothScannerTheme {
-        DeviceCard()
+        DeviceCard(
+            BluetoothDeviceEntity("abc", "123", DeviceType.TOY)
+        )
     }
 }
 
