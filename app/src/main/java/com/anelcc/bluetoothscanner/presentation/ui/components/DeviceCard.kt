@@ -11,11 +11,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.anelcc.bluetoothscanner.R
 import com.anelcc.bluetoothscanner.data.BluetoothDeviceEntity
 import com.anelcc.bluetoothscanner.data.DeviceType
 import com.anelcc.bluetoothscanner.presentation.theme.BluetoothScannerTheme
@@ -30,20 +28,21 @@ fun DeviceCard(device: BluetoothDeviceEntity) {
             modifier = Modifier.padding(16.dp)
         ) {
             Text(
-                text = stringResource(R.string.app_name),
+                /*text = device.address,*/
+                text = "A1:B1:C1:D1:E1:F1",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold
             )
             Spacer(modifier = Modifier.height(4.dp))
 
             Text(
-                text = "MAC: 12345678",
+                text = device.name,
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
             Text(
-                text = "Type",
+                text = device.deviceType.name,
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
