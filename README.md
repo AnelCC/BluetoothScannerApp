@@ -19,3 +19,14 @@ There are two main types:
    * Designed for low-power, short-burst communication. 
    * Used for smart devices, sensors, wearables, etc. 
    * Preferred for apps that talk to tools, health devices, or anything battery-powered.
+
+🔧 What Can You Do with Bluetooth in Android?
+| Task                     | Classic Bluetooth | BLE |
+| ------------------------ | ----------------- | --- |
+| Scan for nearby devices  | ✅                 | ✅   |
+| Connect to paired device | ✅                 | ✅   |
+| Send/receive data        | ✅                 | ✅   |
+| Stream audio             | ✅                 | ❌   |
+| Battery-efficient        | ❌                 | ✅   |
+| Interact with IoT tools  | 🔸                 | ✅   |
+
