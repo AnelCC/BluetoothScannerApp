@@ -30,3 +30,12 @@ There are two main types:
 | Battery-efficient        | ❌                 | ✅   |
 | Interact with IoT tools  | 🔸                 | ✅   |
 
+📚 Android APIs to Work with Bluetooth
+| API                     | Use                                                  |
+| ----------------------- | ---------------------------------------------------- |
+| `BluetoothAdapter`      | Entry point for all Bluetooth tasks                  |
+| `BluetoothDevice`       | Represents a remote device                           |
+| `BluetoothSocket`       | For Classic Bluetooth communication                  |
+| `BluetoothGatt`         | For BLE communication                                |
+| `BluetoothGattCallback` | Receives BLE events (connected, data received, etc.) |
+| `BluetoothLeScanner`    | Scans for BLE devices                                |
