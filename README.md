@@ -39,3 +39,16 @@ There are two main types:
 | `BluetoothGatt`         | For BLE communication                                |
 | `BluetoothGattCallback` | Receives BLE events (connected, data received, etc.) |
 | `BluetoothLeScanner`    | Scans for BLE devices                                |
+
+
+🔷 BluetoothAdapter Callbacks Overview
+| **Component**        | **Callback Method**                              | **Purpose**                                               |
+| -------------------- | ------------------------------------------------ | --------------------------------------------------------- |
+| `BluetoothAdapter`   | `BluetoothAdapter.LeScanCallback` *(deprecated)* | Callback when BLE device is found during legacy scanning. |
+| `BluetoothLeScanner` | `ScanCallback`                                   | Newer way to receive BLE scan results.                    |
+| `BluetoothAdapter`   | `BroadcastReceiver` (intent-based)               | Listen for Bluetooth state or discovery events.           |
+
+🧩 Example: BLE Use Case
+* The app scans for BLE devices.
+* Connects to the devices.
+* Reads battery level or motor status via GATT.
