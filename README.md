@@ -48,6 +48,15 @@ There are two main types:
 | `BluetoothLeScanner` | `ScanCallback`                                   | Newer way to receive BLE scan results.                    |
 | `BluetoothAdapter`   | `BroadcastReceiver` (intent-based)               | Listen for Bluetooth state or discovery events.           |
 
+📦 Why Not Just Use a Callback?
+Callbacks like ScanCallback are only for BLE-specific tasks.
+But many important changes (Bluetooth state, pairing, etc.) happen at the system level — and callbacks alone can’t observe system-wide changes.
+
+So Android gives you BroadcastReceiver to:
+* Know when Bluetooth is turned on/off
+* Detect device pairing changes
+* Respond to device discovery events
+
 🧩 Example: BLE Use Case
 * The app scans for BLE devices.
 * Connects to the devices.
