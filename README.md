@@ -61,3 +61,5 @@ So Android gives you BroadcastReceiver to:
 * The app scans for BLE devices.
 * Connects to the devices.
 * Reads battery level or motor status via GATT.
+
+## Preview 🎉
