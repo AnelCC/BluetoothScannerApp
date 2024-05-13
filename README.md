@@ -63,3 +63,9 @@ So Android gives you BroadcastReceiver to:
 * Reads battery level or motor status via GATT.
 
 ## Preview 🎉
+<img src="https://raw.githubusercontent.com/AnelCC/BluetoothScannerApp/refs/heads/main/image/Bluetooth_permission1.png" width="180" height="400"/><img src="https://raw.githubusercontent.com/AnelCC/BluetoothScannerApp/refs/heads/main/image/Bluetooth_permission2.png" width="180" height="400"/>
+
+<img src="https://raw.githubusercontent.com/AnelCC/BluetoothScannerApp/refs/heads/main/image/Bluetooth_error1.png" width="180" height="400"/><img src="https://raw.githubusercontent.com/AnelCC/BluetoothScannerApp/refs/heads/main/image/Bluetooth_error2.png" width="180" height="400"/>
+
+<img src="https://raw.githubusercontent.com/AnelCC/BluetoothScannerApp/refs/heads/main/image/Bluetooth_state1.png" width="180" height="400"/><img src="https://raw.githubusercontent.com/AnelCC/BluetoothScannerApp/refs/heads/main/image/Bluetooth_state2.png" width="180" height="400"/>
+<img src="https://raw.githubusercontent.com/AnelCC/BluetoothScannerApp/refs/heads/main/image/Bluetooth_state3.png" width="180" height="400"/><img src="https://raw.githubusercontent.com/AnelCC/BluetoothScannerApp/refs/heads/main/image/Bluetooth_state4.png" width="180" height="400"/>
